@@ -3,12 +3,11 @@ import Header from './Header'
 import { checkValidateData } from '../utils/Validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/Firebase';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {addUser} from '../utils/userSlice';
+import userAvatar from '../images/userIcon.jpg'
 
 const Login = () => {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [isSignInForm, setIsSignInForm] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
@@ -37,11 +36,10 @@ const Login = () => {
                 .then((userCredential) => {
                     const user = userCredential.user;
                     updateProfile(auth.currentUser, {
-                        displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/93517218?v=4"
+                        displayName: name.current.value, photoURL: {userAvatar}
                     }).then(() => {
                         const { uid, email, displayName, photoURL } = auth.currentUser;
                         dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
-                        navigate("/browse")
                     }).catch((error) => {
                         setErrorMessage(error.message);
                     });
@@ -58,7 +56,6 @@ const Login = () => {
                 .then((userCredential) => {
                     const user = userCredential.user;
                     console.log(user)
-                    navigate("/browse")
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -69,12 +66,12 @@ const Login = () => {
     }
 
     return (
-        <div className='relative z-0 min-h-screen overflow-hidden'>
+        <div className='relative min-h-screen overflow-hidden'>
             <div className="absolute -z-10">
                 <img src="https://assets.nflxext.com/ffe/siteui/vlv3/9d3533b2-0e2b-40b2-95e0-ecd7979cc88b/a3873901-5b7c-46eb-b9fa-12fea5197bd3/IN-en-20240311-popsignuptwoweeks-perspective_alpha_website_large.jpg" alt="netlix-background" />
             </div>
             <Header />
-            <div className='max-w-[700px] grow my-0 mx-auto py-0 px-[5%]'>
+            <div className='max-w-[700px] grow mt-20 my-0 mx-auto py-0 px-[5%]'>
                 <div className='min-h-[600px] p-[50px] flex flex-col w-full rounded-lg bg-black/70'>
                     <h1 className='mb-5 text-white text-4xl font-semibold p-2'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
                     <form onSubmit={(e) => e.preventDefault()} className='flex flex-col gap-4'>

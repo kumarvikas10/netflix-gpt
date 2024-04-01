@@ -22,6 +22,8 @@
 - Update Store with movie store in movieSlice
 - fetch data for trailer video and update in custom hook  in useTrailer video
 - build browse page and add title and trailer in it.
+- Build Secondary container and add movies list by fetching api from tmdb
+- create usehook for popular movies & top rated movies and make differnt movie list
 - 
 
 

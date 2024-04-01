@@ -3,8 +3,8 @@ import playIcon from '../images/playIcon.svg'
 const VideoTitle = ({ title, overview }) => {
 
   return (
-    <div className="w-full h-[100vh] aspect-video relative z-10 bg-gradient-to-r from-black">
-      <div className='w-6/12 pt-[400px] pl-8'>
+    <div className="w-full aspect-video relative z-10 bg-gradient-to-r from-black">
+      <div className='w-6/12 pt-[360px] pl-8'>
         <h1 className="text-white text-4xl font-semibold mb-3">{title}</h1>
         <h3 className="text-white text-base font-light ">{overview}</h3>
         <div className="mt-4 flex align-middle">

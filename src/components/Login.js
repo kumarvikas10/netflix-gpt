@@ -5,7 +5,8 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { auth } from '../utils/Firebase';
 import { useDispatch } from 'react-redux';
 import {addUser} from '../utils/userSlice';
-import userAvatar from '../images/userIcon.jpg'
+import userAvatar from '../images/userIcon.jpg';
+import {Background_IMG} from '../utils/constants';
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -68,7 +69,7 @@ const Login = () => {
     return (
         <div className='relative min-h-screen overflow-hidden'>
             <div className="absolute -z-10">
-                <img src="https://assets.nflxext.com/ffe/siteui/vlv3/9d3533b2-0e2b-40b2-95e0-ecd7979cc88b/a3873901-5b7c-46eb-b9fa-12fea5197bd3/IN-en-20240311-popsignuptwoweeks-perspective_alpha_website_large.jpg" alt="netlix-background" />
+                <img src={Background_IMG} alt="netlix-background" />
             </div>
             <Header />
             <div className='max-w-[700px] grow mt-20 my-0 mx-auto py-0 px-[5%]'>
